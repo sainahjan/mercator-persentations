@@ -102,3 +102,18 @@ hint:   git branch -m <name>
 Initialized empty Git repository in /Users/dan.silaghimercator.group/fs/proj/local/git-fundamentals-marp/my-test-repo/.git/
 ```
 
+---
+### Demo time! (Step 2)
+⚠️ In a terminal window you won't use for work ⚠️,
+set the following environment variables:
+```bash
+export GIT_AUTHOR_NAME='Author';
+export GIT_AUTHOR_EMAIL='some@email';
+export GIT_COMMITTER_NAME='Author';
+export GIT_COMMITTER_EMAIL='some@email';
+
+export GIT_AUTHOR_DATE='2005-04-07T22:13:13+0000';
+export GIT_COMMITTER_DATE='2005-04-07T22:13:13+0000';
+```
+This will force all commits to have the same dates/email.
+
