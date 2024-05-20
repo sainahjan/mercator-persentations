@@ -37,6 +37,15 @@ style: |
     content: '';
     order: 999999;
   }
+
+  h2, h3, h4, h5, h6 {
+    opacity: .9;
+  }
+
+  ul, li {
+    text-align: left;
+    margin-left: 0;
+  }
 ---
 # Git Fundamentals
 ## Git objects
