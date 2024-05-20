@@ -114,6 +114,8 @@ export GIT_COMMITTER_EMAIL='some@email';
 
 export GIT_AUTHOR_DATE='2005-04-07T22:13:13+0000';
 export GIT_COMMITTER_DATE='2005-04-07T22:13:13+0000';
+
+export PS1="GIT DEMO ONLY: %1~: "; # To give you a warning in the terminal prompt.
 ```
 This will force all commits to have the same dates/email.
 
