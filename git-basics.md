@@ -48,7 +48,49 @@ style: |
   }
 ---
 # Git Fundamentals
-## Git objects
+### What are Git objects?
 
 ---
+## What are Git objects?
+
+<br/>
+
+---
+## What are Git objects?
+
+They're files.
+
+<br/><br/><br/><br/><br/><br/><br/>
+
+---
+### Where are Git objects located?
+
+---
+### Where are Git objects located?
+
+They're in the `.git` directory.
+
+```
+.git/
+  objects/💁‍♂️
+  ...
+app/
+build.sbt
+```
+
+---
+### Demo time!
+
+```bash
+mkdir my-test-repo
+cd my-test-repo
+git init
+
+ls .git
+ls .git/objects
+```
+Output:
+```text
+
+```
 
