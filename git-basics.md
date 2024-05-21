@@ -79,7 +79,16 @@ build.sbt
 ```
 
 ---
-### Demo time!
+### Demo time! (Prerequisites)
+
+Install the `tree` command:
+```bash
+brew install tree
+```
+Useful for visualising directory trees in one go.
+
+---
+### Demo time! (Step 1)
 
 Create a fresh repo:
 ```bash
@@ -115,7 +124,78 @@ export GIT_COMMITTER_EMAIL='some@email';
 export GIT_AUTHOR_DATE='2005-04-07T22:13:13+0000';
 export GIT_COMMITTER_DATE='2005-04-07T22:13:13+0000';
 
-export PS1="GIT DEMO ONLY: %1~: "; # To give you a warning in the terminal prompt.
+export PS1="GIT DEMO ONLY: %1~ $ "; # To give you a warning in the terminal prompt.
 ```
 This will force all commits to have the same dates/email.
+
+---
+### Demo time! (Step 3)
+Install the `tree` command:
+```
+brew install tree
+```
+
+It's useful for visualising directory trees.
+
+---
+### Demo time! (Step 3)
+
+We're in a fresh repo, so no commits yet!
+
+Run:
+```bash
+git status;
+```
+Output:
+```text
+On branch master
+
+No commits yet
+
+nothing to commit (create/copy files and use "git add" to track)
+```
+
+---
+### Demo time! (Step 4)
+Let's check the objects. Run:
+```bash
+tree .git/objects
+```
+Outputs:
+```text
+.git/objects
+├── info
+└── pack
+
+3 directories, 0 files
+```
+No objects yet. 😔 
+Those are empty directories, which we'll ignore.
+
+---
+### Demo time! (Step 5)
+
+So let's create a file.
+```bash
+touch my-file
+```
+
+```bash
+tree .git/objects
+```
+
+Outputs:
+```
+.git/objects
+├── info
+└── pack
+
+3 directories, 0 files
+```
+
+---
+### Demo time! (Step 6)
+
+---
+### Demo time! (Step 7)
 
