@@ -46,9 +46,21 @@ style: |
     text-align: left;
     margin-left: 0;
   }
+
+  .spoiler:not(:hover) {
+    color: var(--color-foreground);
+    background-color: var(--color-foreground);
+  }
 ---
 # Git Fundamentals
 ### What are Git objects?
+
+---
+## What's the index?
+## What's the working tree?
+
+---
+![bg](./files/worktree-index-commit.svg)
 
 ---
 ## What are Git objects?
@@ -77,6 +89,9 @@ They're in the `.git` directory.
 app/
 build.sbt
 ```
+
+---
+## Demo time!
 
 ---
 ### Demo time! (Prerequisites)
@@ -178,13 +193,9 @@ Those are empty directories, which we'll ignore.
 So let's create a file.
 ```bash
 touch my-file
-```
 
-```bash
 tree .git/objects
 ```
-
-Outputs:
 ```
 .git/objects
 ├── info
@@ -192,10 +203,47 @@ Outputs:
 
 3 directories, 0 files
 ```
+No objects yet. Why?
+<span class="spoiler">Because the index is empty and there are no commits!</span>
 
 ---
 ### Demo time! (Step 6)
+Add the new file to the index.
+```bash
+git add my-file
 
+tree .git/objects
+```
+```
+.git/objects
+├── e6
+│   └── 9de29bb2d1d6434b8b29ae775ad8c2e48c5391
+├── info
+└── pack
+
+4 directories, 1 file
+```
 ---
 ### Demo time! (Step 7)
+Commit the file.
+```bash
+git commit -m "Initial file."
 
+tree .git/objects
+```
+```
+.git/objects
+├── 52
+│   └── 82521d8ce09f66ba9cbab0f5eabf23ad31f569
+├── d7
+│   └── 6cef36d5ead14b2d0dada0de011d90f75ba760
+├── e6
+│   └── 9de29bb2d1d6434b8b29ae775ad8c2e48c5391
+├── info
+└── pack
+```
+
+---
+## Demo over!
+
+---
