@@ -147,15 +147,6 @@ This will force all commits to have the same dates/email.
 
 ---
 ### Demo time! (Step 3)
-Install the `tree` command:
-```
-brew install tree
-```
-
-It's useful for visualising directory trees.
-
----
-### Demo time! (Step 3)
 
 We're in a fresh repo, so no commits yet!
 
@@ -225,14 +216,34 @@ tree .git/objects
 
 4 directories, 1 file
 ```
+
 ---
 ### Demo time! (Step 7)
 Commit the file.
 ```bash
 git commit -m "Initial file."
+```
 
+```
+[master (root-commit) d76cef3] Initial file.
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 my-file
+```
+
+```bash
+git rev-parse HEAD
+```
+<!-- Outputs the commit ID given a commit reference: -->
+```
+d76cef36d5ead14b2d0dada0de011d90f75ba760
+```
+
+---
+### Demo time! (Step 7)
+```bash
 tree .git/objects
 ```
+
 ```
 .git/objects
 ├── 52
@@ -251,3 +262,71 @@ tree .git/objects
 ---
 ### Git objects
 As you add files and make commits, new files keep appearing in `.git/objects`.
+
+The files are in unreadable directories and have unreadable names.
+
+```text
+e6/9de29bb2d1d6434b8b29ae775ad8c2e48c5391
+```
+
+---
+### Git objects
+
+The file
+```text
+e6/9de29bb2d1d6434b8b29ae775ad8c2e48c5391
+```
+has the object name:
+```text
+e69de29bb2d1d6434b8b29ae775ad8c2e48c5391
+```
+
+The first two characters are moved to the directory level to prevent massive directories.
+
+---
+### So what's a Git object?
+
+
+---
+### So what's a Git object?
+
+- the content of a file
+- the content of a directory
+- a commit
+- a special kind of tag
+
+---
+### Blob
+
+---
+### Blobs
+
+- These git objects contain text or binary data.
+<br/>
+- They're the *content* of files.
+<br/>
+- File names and file metadata aren't stored in blobs.
+
+---
+### Trees
+- They're the content of directories, including the top-level directory.
+
+- The name of the directory is not stored in its tree object.
+
+- Stores the metadata of the directories and files *inside*.
+
+---
+### Commits
+- You know what commits are.
+- They represent the circumstances under which a `tree` was made.
+  - A list of parent commits
+  - Author name/email/date
+  - Committer name/email/date
+  - A tree object representing the top level
+  - Optional cryptographic data to prove authenticity.
+
+---
+### Commits
+```bash
+
+```
