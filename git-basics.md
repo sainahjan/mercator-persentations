@@ -107,9 +107,11 @@ Useful for visualising directory trees in one go.
 
 Create a fresh repo:
 ```bash
-rm -r my-test-repo;
+rm -rf my-test-repo;
 git init my-test-repo;
 cd my-test-repo;
+
+git config --unset --local user.signingkey
 ```
 Output:
 ```text
@@ -123,7 +125,7 @@ hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
 hint: 'development'. The just-created branch can be renamed via this command:
 hint: 
 hint:   git branch -m <name>
-Initialized empty Git repository in /Users/dan.silaghimercator.group/fs/proj/local/git-fundamentals-marp/my-test-repo/.git/
+Initialized empty Git repository in .../my-test-repo/.git/                                                                                           
 ```
 
 ---
