@@ -196,7 +196,7 @@ tree .git/objects
 3 directories, 0 files
 ```
 No objects yet. Why?
-<span class="spoiler">Because the index is empty and there are no commits!</span>
+<!-- Because the index is empty and there are no commits! -->
 
 ---
 ### Demo time! (Step 6)
@@ -477,6 +477,48 @@ git ls-files --stage
 ### How do we see the index?
 
 Or just run `git status`, to get a better summary of our current working tree, index, and current branch.
+
+---
+## Hashing and SHA-1
+
+###### What's SHA-1?
+
+---
+### SHA-1
+
+- An algorithm from 1995.
+- Takes a sequence of bytes of any length and returns a "summary" of 20 bytes.
+- Always returns the same 20 bytes for the same input.
+- *Any* change to the input, no matter how small, yields a completely different output.
+- Very difficult to find inputs that create an output.
+  - Effectively one-way functions.
+
+---
+#### All Git object IDs are the SHA-1 hashes of their content.
+
+###### What does that imply?
+
+---
+### Object IDs are hashes.
+
+If the content of an object changes, its filename will need to change too.
+<br/><br/><br/><br/><br/>
+
+
+---
+### Object IDs are hashes.
+
+If the content of an object changes, its filename will need to change too.
+<br/><br/><br/><br/>sooo...?
+
+---
+### Object IDs are hashes.
+
+All Git objects are immutable.
+<br/><br/>
+Once a commit has been created, the commit with that ID will *never* change.
+<br/>
+Because if you do change it, its ID will change as well.
 
 ---
 # Questions?
