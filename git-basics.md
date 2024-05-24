@@ -458,4 +458,19 @@ gives us 6 objects:
 - `e69de29bb2...` → empty blob
 
 ---
+### How do we see the index?
+The index is not an object, but it does contain a `tree`.
+
+It's stored in a different location, `.git/index`.
+
+See the index with:
+```bash
+git ls-files --stage
+```
+
+```text
+100644 9825b7ec95fa48d57d77232f98a439e201fa21bf 0       my-file
+```
+
+---
 # Questions?
