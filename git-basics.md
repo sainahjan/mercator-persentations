@@ -187,6 +187,7 @@ touch my-file
 
 tree .git/objects
 ```
+
 ```text
 .git/objects
 ├── info
