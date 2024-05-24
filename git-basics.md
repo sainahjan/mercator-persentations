@@ -110,8 +110,6 @@ Create a fresh repo:
 rm -rf my-test-repo;
 git init my-test-repo;
 cd my-test-repo;
-
-git config --unset --local user.signingkey
 ```
 Output:
 ```text
@@ -189,7 +187,7 @@ touch my-file
 
 tree .git/objects
 ```
-```
+```text
 .git/objects
 ├── info
 └── pack
@@ -207,7 +205,7 @@ git add my-file
 
 tree .git/objects
 ```
-```
+```text
 .git/objects
 ├── e6
 │   └── 9de29bb2d1d6434b8b29ae775ad8c2e48c5391
@@ -221,11 +219,11 @@ tree .git/objects
 ### Demo time! (Step 7)
 Commit the file.
 ```bash
-git commit -m "Initial file."
+git commit --no-gpg-sign -m "Initial file."
 ```
 
-```
-[master (root-commit) d76cef3] Initial file.
+```text
+[master (root-commit) dec1708] Initial file.
  1 file changed, 0 insertions(+), 0 deletions(-)
  create mode 100644 my-file
 ```
@@ -234,8 +232,8 @@ git commit -m "Initial file."
 git rev-parse HEAD
 ```
 <!-- Outputs the commit ID given a commit reference: -->
-```
-d76cef36d5ead14b2d0dada0de011d90f75ba760
+```text
+dec1708fb5f82790a8ac634819072ff0e08d05f0
 ```
 
 ---
@@ -244,16 +242,18 @@ d76cef36d5ead14b2d0dada0de011d90f75ba760
 tree .git/objects
 ```
 
-```
+```text
 .git/objects
 ├── 52
 │   └── 82521d8ce09f66ba9cbab0f5eabf23ad31f569
-├── d7
-│   └── 6cef36d5ead14b2d0dada0de011d90f75ba760
+├── de
+│   └── c1708fb5f82790a8ac634819072ff0e08d05f0
 ├── e6
 │   └── 9de29bb2d1d6434b8b29ae775ad8c2e48c5391
 ├── info
 └── pack
+
+6 directories, 3 files
 ```
 
 ---
@@ -317,16 +317,145 @@ The first two characters are moved to the directory level to prevent massive dir
 
 ---
 ### Commits
-- You know what commits are.
-- They represent the circumstances under which a `tree` was made.
-  - A list of parent commits
-  - Author name/email/date
-  - Committer name/email/date
-  - A tree object representing the top level
-  - Optional cryptographic data to prove authenticity.
+
+Objects storing the circumstances under which a `tree` was made.
 
 ---
 ### Commits
+Let's look inside!
 ```bash
-
+git cat-file -p dec1708fb5f82790a8ac634819072ff0e08d05f0
 ```
+
+```text
+tree 5282521d8ce09f66ba9cbab0f5eabf23ad31f569
+author Author <some@email> 1112911993 +0000
+committer Author <some@email> 1112911993 +0000
+
+Initial file.
+```
+- Let's do the same with the tree!
+
+---
+### Trees
+
+```bash
+git cat-file -p 5282521d8ce09f66ba9cbab0f5eabf23ad31f569
+```
+outputs:
+```text
+100644 blob e69de29bb2d1d6434b8b29ae775ad8c2e48c5391    my-file
+```
+
+Let's repeat with the blob inside!
+
+---
+### Blobs
+```bash
+git cat-file -p e69de29bb2d1d6434b8b29ae775ad8c2e48c5391
+```
+outputs nothing!
+<br/><br/>
+Why?
+
+---
+### Blobs
+Our file was empty when we made the commit.
+<br/>
+Let's fix that.
+
+---
+### Get a better blob
+
+```bash
+echo "This is the content of my-file" > my-file
+git add my-file
+git commit --no-gpg-sign -m "Updated file."
+```
+```text
+[master 5a62e99] Updated file.
+ 1 file changed, 1 insertion(+)
+```
+And let's get the new commit ID.
+```bash
+git rev-parse HEAD
+```
+```text
+5a62e9907cc1d1b812e1ec0f25c9f2af75c1ff74
+```
+
+---
+### A new commit
+Look inside the new commit:
+```bash
+git cat-file -p 5a62e9907cc1d1b812e1ec0f25c9f2af75c1ff74
+```
+
+```bash
+tree 1e66dc10d0cd372d1767497cd7f38922b9eb22db
+parent dec1708fb5f82790a8ac634819072ff0e08d05f0
+author Author <some@email> 1112911993 +0000
+committer Author <some@email> 1112911993 +0000
+
+Updated file.
+```
+We have a parent object!
+And a new tree.
+
+---
+### A parent, you say?
+
+---
+### The commit parent
+```bash
+git cat-file -p dec1708fb5f82790a8ac634819072ff0e08d05f0
+```
+
+```text
+tree 5282521d8ce09f66ba9cbab0f5eabf23ad31f569
+author Author <some@email> 1112911993 +0000
+committer Author <some@email> 1112911993 +0000
+
+Initial file.
+```
+
+Ah. Just the previous commit. It even has the same ID.
+
+---
+### Our new tree
+```bash
+git cat-file -p 1e66dc10d0cd372d1767497cd7f38922b9eb22db
+```
+
+```text
+100644 blob 9825b7ec95fa48d57d77232f98a439e201fa21bf    my-file
+```
+
+It looks the same, but the blob ID is different.
+
+---
+### Our new blob
+```bash
+git cat-file -p 9825b7ec95fa48d57d77232f98a439e201fa21bf
+```
+
+```text
+This is the content of my-file
+```
+
+---
+### Our current status
+```bash
+tree .git/objects
+```
+gives us 6 objects:
+
+- `1e66dc10d0...` → the new top-level tree
+- `5282521d8c...` → the old top-level tree
+- `5a62e9907c...` → the new commit
+- `9825b7ec95...` → "This is the content of my-file"
+- `dec1708fb5...` → the old/initial commit
+- `e69de29bb2...` → empty blob
+
+---
+# Questions?
