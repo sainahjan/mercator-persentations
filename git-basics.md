@@ -247,3 +247,5 @@ tree .git/objects
 ## Demo over!
 
 ---
+### Git objects
+As you add files and make commits, new files keep appearing in `.git/objects`.
