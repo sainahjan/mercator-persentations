@@ -473,4 +473,9 @@ git ls-files --stage
 ```
 
 ---
+### How do we see the index?
+
+Or just run `git status`, to get a better summary of our current working tree, index, and current branch.
+
+---
 # Questions?
