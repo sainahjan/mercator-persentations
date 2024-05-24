@@ -24,9 +24,9 @@
      inkscape:deskcolor="#d1d1d1"
      inkscape:document-units="px"
      showgrid="true"
-     inkscape:zoom="0.5946522"
-     inkscape:cx="655.84555"
-     inkscape:cy="287.56305"
+     inkscape:zoom="0.84096521"
+     inkscape:cx="608.82424"
+     inkscape:cy="347.22007"
      inkscape:window-width="1920"
      inkscape:window-height="1027"
      inkscape:window-x="0"
@@ -255,7 +255,13 @@
        transform="translate(446.56695,-61.3727)"><tspan
          x="592.45758"
          y="240.4767"
-         id="tspan22">The files stored in a commit</tspan></text>
+         id="tspan22">The files stored in a commit
+</tspan><tspan
+         x="592.45758"
+         y="273.83091"
+         id="tspan24">(<tspan
+   style="font-style:italic;-inkscape-font-specification:'Helvetica Neue Italic'"
+   id="tspan23">any</tspan> commit, for simplicity)</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:64px;font-family:'Helvetica Neue';-inkscape-font-specification:'Helvetica Neue, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#334455;fill-opacity:1;stroke:none;stroke-width:2;stroke-dasharray:none;stroke-opacity:1"
@@ -321,7 +327,7 @@
          transform="translate(8,-9)"><tspan
            x="432"
            y="352"
-           id="tspan23">git add -A</tspan></text>
+           id="tspan27">git add -A</tspan></text>
       <text
          xml:space="preserve"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:32px;line-height:normal;font-family:Monospace;-inkscape-font-specification:Monospace;font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-variant-east-asian:normal;font-feature-settings:normal;text-indent:0;text-align:center;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000000;letter-spacing:normal;word-spacing:normal;text-transform:none;writing-mode:lr-tb;direction:ltr;text-orientation:mixed;dominant-baseline:auto;baseline-shift:baseline;text-anchor:middle;white-space:pre;inline-size:352;display:none;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
@@ -332,7 +338,7 @@
          transform="translate(0,-9)"><tspan
            x="848"
            y="352"
-           id="tspan24">cmd i-c</tspan></text>
+           id="tspan28">cmd i-c</tspan></text>
       <text
          xml:space="preserve"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:32px;line-height:normal;font-family:Monospace;-inkscape-font-specification:Monospace;font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-variant-east-asian:normal;font-feature-settings:normal;text-indent:0;text-align:center;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000000;letter-spacing:normal;word-spacing:normal;text-transform:none;writing-mode:lr-tb;direction:ltr;text-orientation:mixed;dominant-baseline:auto;baseline-shift:baseline;text-anchor:middle;white-space:pre;inline-size:768;display:none;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
@@ -343,7 +349,7 @@
          transform="translate(-208,-9)"><tspan
            x="848"
            y="352"
-           id="tspan27">cmd w-c</tspan></text>
+           id="tspan29">cmd w-c</tspan></text>
       <text
          xml:space="preserve"
          id="text10"
@@ -352,10 +358,10 @@
          inkscape:label="notes"><tspan
            x="1039.0566"
            y="343.68646"
-           id="tspan28">affects the </tspan><tspan
+           id="tspan30">affects the </tspan><tspan
            x="1039.0566"
            y="373.68646"
-           id="tspan29">HEAD</tspan></text>
+           id="tspan31">HEAD</tspan></text>
     </g>
     <g
        id="g10-9"
@@ -386,7 +392,7 @@
          transform="translate(8,-9)"><tspan
            x="432"
            y="352"
-           id="tspan30">cmd w-i</tspan></text>
+           id="tspan32">cmd w-i</tspan></text>
       <text
          xml:space="preserve"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:26.6667px;line-height:normal;font-family:Monospace;-inkscape-font-specification:Monospace;font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-variant-east-asian:normal;font-feature-settings:normal;text-indent:0;text-align:center;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000000;letter-spacing:normal;word-spacing:normal;text-transform:none;writing-mode:lr-tb;direction:ltr;text-orientation:mixed;dominant-baseline:auto;baseline-shift:baseline;text-anchor:middle;white-space:pre;inline-size:352;display:inline;fill:#800080;fill-opacity:1;stroke:#800080;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
@@ -397,7 +403,7 @@
          transform="translate(0,-9)"><tspan
            x="848"
            y="352"
-           id="tspan31">git commit</tspan></text>
+           id="tspan33">git commit</tspan></text>
       <text
          xml:space="preserve"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:32px;line-height:normal;font-family:Monospace;-inkscape-font-specification:Monospace;font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-variant-east-asian:normal;font-feature-settings:normal;text-indent:0;text-align:center;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000000;letter-spacing:normal;word-spacing:normal;text-transform:none;writing-mode:lr-tb;direction:ltr;text-orientation:mixed;dominant-baseline:auto;baseline-shift:baseline;text-anchor:middle;white-space:pre;inline-size:768;display:none;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
@@ -408,7 +414,7 @@
          transform="translate(-208,-9)"><tspan
            x="848"
            y="352"
-           id="tspan32">cmd w-c</tspan></text>
+           id="tspan34">cmd w-c</tspan></text>
       <text
          xml:space="preserve"
          id="text10-6"
@@ -417,7 +423,7 @@
          inkscape:label="notes"><tspan
            x="1039.0566"
            y="343.68646"
-           id="tspan33">Updates HEAD</tspan></text>
+           id="tspan35">Updates HEAD</tspan></text>
     </g>
     <g
        id="g10-6"
@@ -448,9 +454,9 @@
          transform="translate(8,-9)"><tspan
            x="432"
            y="352"
-           id="tspan35">git commit -a <tspan
+           id="tspan37">git commit -a <tspan
    style="font-size:16px;fill-opacity:0.5;stroke-opacity:0.5"
-   id="tspan34"># kind of</tspan></tspan></text>
+   id="tspan36"># kind of</tspan></tspan></text>
       <text
          xml:space="preserve"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:32px;line-height:normal;font-family:Monospace;-inkscape-font-specification:Monospace;font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-variant-east-asian:normal;font-feature-settings:normal;text-indent:0;text-align:center;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000000;letter-spacing:normal;word-spacing:normal;text-transform:none;writing-mode:lr-tb;direction:ltr;text-orientation:mixed;dominant-baseline:auto;baseline-shift:baseline;text-anchor:middle;white-space:pre;inline-size:352;display:none;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
@@ -461,7 +467,7 @@
          transform="translate(0,-9)"><tspan
            x="848"
            y="352"
-           id="tspan36">cmd i-c</tspan></text>
+           id="tspan38">cmd i-c</tspan></text>
       <text
          xml:space="preserve"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:32px;line-height:normal;font-family:Monospace;-inkscape-font-specification:Monospace;font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-variant-east-asian:normal;font-feature-settings:normal;text-indent:0;text-align:center;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000000;letter-spacing:normal;word-spacing:normal;text-transform:none;writing-mode:lr-tb;direction:ltr;text-orientation:mixed;dominant-baseline:auto;baseline-shift:baseline;text-anchor:middle;white-space:pre;inline-size:768;display:none;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
@@ -472,7 +478,7 @@
          transform="translate(-208,-9)"><tspan
            x="848"
            y="352"
-           id="tspan37">cmd w-c</tspan></text>
+           id="tspan39">cmd w-c</tspan></text>
       <text
          xml:space="preserve"
          id="text10-4"
@@ -481,7 +487,33 @@
          inkscape:label="notes"><tspan
            x="1039.0566"
            y="343.68646"
-           id="tspan38">Updates HEAD</tspan></text>
+           id="tspan40">Updates HEAD</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:26.6667px;line-height:normal;font-family:Monospace;-inkscape-font-specification:Monospace;font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-variant-east-asian:normal;font-feature-settings:normal;text-indent:0;text-align:center;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000000;letter-spacing:normal;word-spacing:normal;text-transform:none;writing-mode:lr-tb;direction:ltr;text-orientation:mixed;dominant-baseline:auto;baseline-shift:baseline;text-anchor:middle;white-space:pre;inline-size:368;display:inline;fill:#800080;fill-opacity:1;stroke:none;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         x="432"
+         y="352"
+         id="text9-2-7"
+         inkscape:label="cmd w-i"
+         transform="translate(8,196)"><tspan
+           x="432"
+           y="352"
+           id="tspan42"><tspan
+             style="font-size:16px;fill:#800000;fill-opacity:0.5;stroke-opacity:0.5"
+             id="tspan41">(kind of)</tspan></tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:26.6667px;line-height:normal;font-family:Monospace;-inkscape-font-specification:Monospace;font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-variant-east-asian:normal;font-feature-settings:normal;text-indent:0;text-align:center;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000000;letter-spacing:normal;word-spacing:normal;text-transform:none;writing-mode:lr-tb;direction:ltr;text-orientation:mixed;dominant-baseline:auto;baseline-shift:baseline;text-anchor:middle;white-space:pre;inline-size:368;display:inline;fill:#008080;fill-opacity:1;stroke:none;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         x="432"
+         y="352"
+         id="text9-2-7-5"
+         inkscape:label="cmd w-i"
+         transform="translate(7.76953,68)"><tspan
+           x="432"
+           y="352"
+           id="tspan44"><tspan
+             style="font-size:16px;fill-opacity:0.5;stroke-opacity:0.5"
+             id="tspan43">(kind of)</tspan></tspan></text>
     </g>
     <g
        id="g10-9-0"
@@ -512,7 +544,7 @@
          transform="translate(8,-9)"><tspan
            x="432"
            y="352"
-           id="tspan39">cmd w-i</tspan></text>
+           id="tspan45">cmd w-i</tspan></text>
       <text
          xml:space="preserve"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:26.6667px;line-height:normal;font-family:Monospace;-inkscape-font-specification:Monospace;font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-variant-east-asian:normal;font-feature-settings:normal;text-indent:0;text-align:center;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000000;letter-spacing:normal;word-spacing:normal;text-transform:none;writing-mode:lr-tb;direction:ltr;text-orientation:mixed;dominant-baseline:auto;baseline-shift:baseline;text-anchor:middle;white-space:pre;inline-size:352;display:inline;fill:#008080;fill-opacity:1;stroke:#008080;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
@@ -523,7 +555,7 @@
          transform="translate(0,-9)"><tspan
            x="848"
            y="352"
-           id="tspan40">git checkout</tspan></text>
+           id="tspan46">git checkout</tspan></text>
       <text
          xml:space="preserve"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:32px;line-height:normal;font-family:Monospace;-inkscape-font-specification:Monospace;font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-variant-east-asian:normal;font-feature-settings:normal;text-indent:0;text-align:center;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000000;letter-spacing:normal;word-spacing:normal;text-transform:none;writing-mode:lr-tb;direction:ltr;text-orientation:mixed;dominant-baseline:auto;baseline-shift:baseline;text-anchor:middle;white-space:pre;inline-size:768;display:none;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
@@ -534,7 +566,7 @@
          transform="translate(-208,-9)"><tspan
            x="848"
            y="352"
-           id="tspan41">cmd w-c</tspan></text>
+           id="tspan47">cmd w-c</tspan></text>
       <text
          xml:space="preserve"
          id="text10-6-4"
@@ -543,7 +575,7 @@
          inkscape:label="notes"><tspan
            x="1039.0566"
            y="343.68646"
-           id="tspan42">Updates HEAD</tspan></text>
+           id="tspan48">Updates HEAD</tspan></text>
     </g>
     <g
        id="g10-1"
@@ -574,7 +606,7 @@
          transform="translate(8,-9)"><tspan
            x="432"
            y="352"
-           id="tspan43">cmd w-i</tspan></text>
+           id="tspan49">cmd w-i</tspan></text>
       <text
          xml:space="preserve"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:26.6667px;line-height:normal;font-family:Monospace;-inkscape-font-specification:Monospace;font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-variant-east-asian:normal;font-feature-settings:normal;text-indent:0;text-align:center;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000000;letter-spacing:normal;word-spacing:normal;text-transform:none;writing-mode:lr-tb;direction:ltr;text-orientation:mixed;dominant-baseline:auto;baseline-shift:baseline;text-anchor:middle;white-space:pre;inline-size:352;display:inline;fill:#803300;fill-opacity:1;stroke:none;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
@@ -585,7 +617,7 @@
          transform="translate(0,-9)"><tspan
            x="848"
            y="352"
-           id="tspan44">git reset HEAD</tspan></text>
+           id="tspan50">git reset HEAD</tspan></text>
       <text
          xml:space="preserve"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:32px;line-height:normal;font-family:Monospace;-inkscape-font-specification:Monospace;font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-variant-east-asian:normal;font-feature-settings:normal;text-indent:0;text-align:center;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000000;letter-spacing:normal;word-spacing:normal;text-transform:none;writing-mode:lr-tb;direction:ltr;text-orientation:mixed;dominant-baseline:auto;baseline-shift:baseline;text-anchor:middle;white-space:pre;inline-size:768;display:none;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
@@ -596,7 +628,7 @@
          transform="translate(-208,-9)"><tspan
            x="848"
            y="352"
-           id="tspan45">cmd w-c</tspan></text>
+           id="tspan51">cmd w-c</tspan></text>
       <text
          xml:space="preserve"
          id="text10-8"
@@ -605,7 +637,7 @@
          inkscape:label="notes"><tspan
            x="1039.0566"
            y="343.68646"
-           id="tspan46">Updates HEAD</tspan></text>
+           id="tspan52">Updates HEAD</tspan></text>
     </g>
     <g
        id="g10-9-2"
@@ -636,7 +668,7 @@
          transform="translate(8,-9)"><tspan
            x="432"
            y="352"
-           id="tspan47">cmd w-i</tspan></text>
+           id="tspan53">cmd w-i</tspan></text>
       <text
          xml:space="preserve"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:26.6667px;line-height:normal;font-family:Monospace;-inkscape-font-specification:Monospace;font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-variant-east-asian:normal;font-feature-settings:normal;text-indent:0;text-align:center;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000000;letter-spacing:normal;word-spacing:normal;text-transform:none;writing-mode:lr-tb;direction:ltr;text-orientation:mixed;dominant-baseline:auto;baseline-shift:baseline;text-anchor:middle;white-space:pre;inline-size:352;display:inline;fill:#800000;fill-opacity:1;stroke:none;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
@@ -647,7 +679,7 @@
          transform="translate(0,-9)"><tspan
            x="848"
            y="352"
-           id="tspan48">git reset --hard HEAD</tspan></text>
+           id="tspan54">git reset --hard HEAD</tspan></text>
       <text
          xml:space="preserve"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:32px;line-height:normal;font-family:Monospace;-inkscape-font-specification:Monospace;font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-variant-east-asian:normal;font-feature-settings:normal;text-indent:0;text-align:center;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000000;letter-spacing:normal;word-spacing:normal;text-transform:none;writing-mode:lr-tb;direction:ltr;text-orientation:mixed;dominant-baseline:auto;baseline-shift:baseline;text-anchor:middle;white-space:pre;inline-size:768;display:none;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
@@ -658,7 +690,7 @@
          transform="translate(-208,-9)"><tspan
            x="848"
            y="352"
-           id="tspan49">cmd w-c</tspan></text>
+           id="tspan55">cmd w-c</tspan></text>
       <text
          xml:space="preserve"
          id="text10-6-42"
@@ -667,10 +699,10 @@
          inkscape:label="notes"><tspan
            x="1039.0566"
            y="343.68646"
-           id="tspan50">affects the </tspan><tspan
+           id="tspan56">affects the </tspan><tspan
            x="1039.0566"
            y="373.68646"
-           id="tspan51">HEAD</tspan></text>
+           id="tspan57">HEAD</tspan></text>
     </g>
     <g
        id="g10-6-6"
@@ -701,7 +733,7 @@
          transform="translate(8,-9)"><tspan
            x="432"
            y="352"
-           id="tspan52">cmd w-i</tspan></text>
+           id="tspan58">cmd w-i</tspan></text>
       <text
          xml:space="preserve"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:26.6667px;line-height:normal;font-family:Monospace;-inkscape-font-specification:Monospace;font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-variant-east-asian:normal;font-feature-settings:normal;text-indent:0;text-align:center;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000000;letter-spacing:normal;word-spacing:normal;text-transform:none;writing-mode:lr-tb;direction:ltr;text-orientation:mixed;dominant-baseline:auto;baseline-shift:baseline;text-anchor:middle;white-space:pre;inline-size:656.192;display:inline;fill:#008000;fill-opacity:1;stroke:none;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
@@ -712,9 +744,9 @@
          transform="translate(0,9)"><tspan
            x="848"
            y="352"
-           id="tspan54">git reset --soft HEAD <tspan
+           id="tspan60">git reset --soft HEAD <tspan
    style="font-size:16px;fill-opacity:0.5"
-   id="tspan53"># does nothing</tspan></tspan></text>
+   id="tspan59"># does nothing</tspan></tspan></text>
       <text
          xml:space="preserve"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:32px;line-height:normal;font-family:Monospace;-inkscape-font-specification:Monospace;font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-variant-east-asian:normal;font-feature-settings:normal;text-indent:0;text-align:center;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000000;letter-spacing:normal;word-spacing:normal;text-transform:none;writing-mode:lr-tb;direction:ltr;text-orientation:mixed;dominant-baseline:auto;baseline-shift:baseline;text-anchor:middle;white-space:pre;inline-size:768;display:none;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
@@ -725,7 +757,7 @@
          transform="translate(-208,-9)"><tspan
            x="848"
            y="352"
-           id="tspan55">cmd w-c</tspan></text>
+           id="tspan61">cmd w-c</tspan></text>
       <text
          xml:space="preserve"
          id="text10-4-5"
@@ -734,10 +766,10 @@
          inkscape:label="notes"><tspan
            x="1039.0566"
            y="343.68646"
-           id="tspan56">affects the </tspan><tspan
+           id="tspan62">affects the </tspan><tspan
            x="1039.0566"
            y="373.68646"
-           id="tspan57">HEAD</tspan></text>
+           id="tspan63">HEAD</tspan></text>
     </g>
   </g>
 </svg>
