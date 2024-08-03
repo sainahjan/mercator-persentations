@@ -1,0 +1,962 @@
+<!doctype html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+
+        <title>reveal.js – The HTML Presentation Framework</title>
+
+        <meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+        <meta name="author" content="Hakim El Hattab">
+
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" href="dist/reset.css">
+        <link rel="stylesheet" href="dist/reveal.css">
+        <link rel="stylesheet" href="dist/theme/black.css" id="theme">
+
+        <!-- Theme used for syntax highlighting of code -->
+        <link rel="stylesheet" href="plugin/highlight/monokai.css">
+
+        <style>
+            h1, h2, h3, h4, h5, h6 {
+                text-transform: none !important;
+            }
+
+            :not(pre) > code {
+                color: #f92672;
+                font-size: calc(var(--r-main-font-size) * 0.9);
+            }
+
+            .reveal pre[data-auto-animate-target] {
+                overflow: visible;
+            }
+
+            .reveal pre code {
+                max-height: none;
+                max-width: none;
+            }
+        </style>
+        <style>
+            * {
+                box-sizing: border-box;
+            }
+
+            .overlap-children {
+                display: grid !important;
+                grid-template-areas: "area";
+                align-items: start;
+                justify-items: start;
+            }
+            .overlap-children > * {
+                grid-area: area;
+                margin-left: 0 !important;
+            }
+
+            .grid-layout {
+                display: grid !important;
+                width: 100%;
+                height: 100%;
+                padding: 1em;
+            }
+
+            .grid-layout > * {
+                margin-left: 0 !important;
+            }
+
+            .grid-layout code {
+                min-width: fit-content;
+            }
+
+            .grid-layout.title-page {
+                grid-template-columns: auto auto auto;
+                grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+                grid-template-areas:
+                        ".......... .......... .........."
+                        "title      title      title     "
+                        "only-title only-title only-title"
+                        ".......... subtitle   subtitle  "
+                        ".......... .......... ..........";
+                align-items: center;
+            }
+            .grid-layout.title-page > :only-child {
+                grid-area: only-title;
+            }
+            .grid-layout.title-page > :nth-child(1):not(:only-child) {
+                grid-area: title;
+            }
+            .grid-layout.title-page > :nth-child(2) {
+                grid-area: subtitle;
+            }
+
+            .grid-layout.title-and-side-by-side {
+                grid-template-columns: auto auto;
+                grid-template-rows: min-content;
+                grid-auto-rows: auto;
+                grid-template-areas:
+                        "title      title     "
+                        ".......... ..........";
+                grid-auto-flow: row;
+                grid-gap: 10px;
+            }
+            .grid-layout.title-and-side-by-side > :nth-child(1) {
+                grid-area: title;
+                align-self: center;
+                justify-self: start;
+            }
+            .grid-layout.title-and-side-by-side > :not(:nth-child(1)) {
+                align-self: start;
+                justify-self: start;
+            }
+            .grid-layout.title-and-side-by-side > .place-wide:not(:nth-child(1)) {
+                grid-column-start: 1;
+                grid-column-end: 3;
+            }
+        </style>
+    </head>
+
+    <body>
+
+        <div class="reveal">
+
+            <!-- Any section element inside of this container is displayed as a slide -->
+            <div class="slides">
+                <section class="grid-layout title-page">
+                    <h2>Oops(I bracketed again)</h2>
+                    <h6>Interpolation gone wrong</h6>
+                </section>
+
+                <section class="grid-layout title-page">
+                    <div>
+                        <h1>Part 1</h1>
+                        <h3>String interpolation</h3>
+                    </div>
+                </section>
+
+                <section class="grid-layout title-and-side-by-side">
+                    <h2>String</h2>
+                    <div class="fragment place-wide" data-markdown>
+                        - A contiguous sequence of characters
+                    </div>
+                    <div class="fragment place-wide" data-markdown>
+                        - Usually immutable
+                          - _Always immutable_ in Scala/Java
+                    </div>
+                    <div class="fragment" data-markdown>
+                        - In Scala, it's `java.lang.String`
+                    </div>
+                    <pre class="fragment fade-right">
+                        <code class="hljs scala" data-trim data-line-numbers>
+                            val greeting: String = "Hello"
+
+                            println(greeting) // Prints Hello
+                        </code>
+                    </pre>
+                </section>
+
+                <section class="grid-layout title-and-side-by-side">
+                    <h2>String concatenation</h2>
+                    <div class="fragment" data-markdown>
+                        - Takes the characters from two strings and puts them in a new string.
+                    </div>
+                    <pre class="fragment fade-right">
+                        <code class="hljs scala" data-trim data-line-numbers="4">
+                            val greeting: String = "Hello"
+                            val target: String = "World"
+
+                            val fullGreeting = greeting + target
+
+                            println(fullGreeting) // Prints HelloWorld
+                        </code>
+                    </pre>
+
+                    <div class="fragment" data-markdown>
+                        - Can be done repeatedly.
+                    </div>
+                    <div class="overlap-children">
+                        <pre data-id="ani" class="fragment fade-right fade-in-then-out">
+                            <code class="hljs scala" data-trim data-line-numbers="5">
+                                val greeting: String = "Hello"
+                                val target: String = "World"
+
+                                val fullGreeting2 =
+                                  greeting + " " + target + "!"
+
+                                print(fullGreeting2)// Prints Hello World!
+                            </code>
+                        </pre>
+                        <pre data-id="ani" class="fragment">
+                            <code class="hljs scala" data-trim data-line-numbers="5,6">
+                                val greeting: String = "Hello"
+                                val target: String = "World"
+
+                                val fullGreeting2 =
+                                      greeting + " "  + target  + "!"
+                                //  ((greeting + " ") + target) + "!"
+
+                                print(fullGreeting2)// Prints Hello World!
+                            </code>
+                        </pre>
+                    </div>
+
+                </section>
+
+                <section>
+                    <section class="grid-layout title-and-side-by-side" data-auto-animate>
+                        <h2>String interpolation</h2>
+                        <div class="fragment" data-markdown>
+                            - Combines strings and other values into a new string.
+                        </div>
+                        <pre>
+                            <code class="hljs scala fragment" data-trim data-line-numbers>
+                                val name: String = "Amos"
+                            </code>
+                            <code class="hljs scala fragment" data-trim data-line-numbers>
+                                val name: String = "Amos"
+
+                                val greeting: String = s"Hello $name!"
+
+                                println(greeting)
+                            </code>
+                            <code class="hljs scala fragment" data-trim data-line-numbers>
+                                val name: String = "Amos"
+
+                                val greeting: String = s"Hello $name!"
+
+                                println(greeting) // Prints: Hello Amos!
+                            </code>
+                        </pre>
+                        <div class="fragment" data-markdown>
+                            - Can also use braces.
+                        </div>
+                        <pre>
+                            <code class="hljs scala fragment" data-trim data-line-numbers>
+                                println(s"By our Math, 1 + 1 = ${1+1}")
+                            </code>
+                            <code class="hljs scala fragment" data-trim data-line-numbers>
+                                println(s"By our Math, 1 + 1 = ${1+1}")
+
+                                // Prints: By our Math, 1 + 1 = 2
+                            </code>
+                        </pre>
+
+                    </section>
+                </section>
+
+                <section>
+                    <section class="grid-layout title-and-side-by-side" data-auto-animate>
+                        <h2>How does string interpolation work?</h2>
+                    </section>
+                    <section class="grid-layout title-and-side-by-side" data-auto-animate>
+                        <h2>How does string interpolation work?</h2>
+                        <div class="place-wide">
+                            What will this print?
+                        </div>
+                        <pre style="align-self: center">
+                            <code class="hljs scala" data-trim data-line-numbers>
+                                println(s"By our Math, 1 + 1 = ${1+1}")
+                            </code>
+                        </pre>
+                        <code style="align-self: center; font-size: 0.6em" class="fragment" data-trim>
+                            By our Math, 1 + 1 = 2
+                        </code>
+                        <pre class="fragment" style="align-self: center">
+                            <code class="hljs scala" data-trim data-line-numbers>
+                                val myName = "Ruth"
+                                println(s"Something for $myName")
+                            </code>
+                        </pre>
+                        <code style="align-self: center; font-size: 0.6em" class="fragment" data-trim>
+                            Something for Ruth
+                        </code>
+                        <pre class="fragment" style="align-self: center">
+                            <code class="hljs scala" data-trim data-line-numbers>
+                                val myName = "Ruth"
+                                println(s"I like ${myName.length}.")
+                            </code>
+                        </pre>
+                        <code style="align-self: center; font-size: 0.6em" class="fragment" data-trim>
+                            I like 4.
+                        </code>
+                        <pre data-id="example/send-this-to-ruth-smith/code" class="fragment place-wide">
+                            <code class="hljs scala" data-trim data-line-numbers="1|1-2|1-3">
+                                final case class Person(firstName: String, lastName: String)
+                                val person = Person("Ruth", "Smith")
+                                println(s"Send this to ${person}.")
+                            </code>
+                        </pre>
+                        <code data-id="example/send-this-to-ruth-smith/result"
+                              style="justify-self: center; font-size: 0.6em; display: inline-block"
+                              class="fragment place-wide"
+                              data-trim
+                        >
+                            Send this to Person(Ruth,Smith).
+                        </code>
+                    </section>
+                    <section class="grid-layout title-and-side-by-side" data-auto-animate>
+                        <h2>How does string interpolation work?</h2>
+                        <pre data-id="example/send-this-to-ruth-smith/code" class="place-wide">
+                            <code class="hljs scala" data-trim data-line-numbers>
+                                final case class Person(firstName: String, lastName: String)
+                                val person = Person("Ruth", "Smith")
+                                println(s"Send this to ${person}.")
+                            </code>
+                        </pre>
+                        <code data-id="example/send-this-to-ruth-smith/result"
+                              style="justify-self: center; font-size: 0.6em; display: inline-block"
+                              class="place-wide"
+                              data-trim
+                        >
+                            Send this to Person(Ruth,Smith).
+                        </code>
+                        <div class="place-wide" data-auto-animate-delay="1" data-markdown>
+                            How does it decide to use `Person(Ruth,Smith)`?
+                        </div>
+                        <pre class="place-wide fragment">
+                            <code class="hljs scala" data-trim data-line-numbers="1">
+                                final class Person(firstName: String, lastName: String)
+                                val person = new Person("Ruth", "Smith")
+                                println(s"Send this to ${person}.")
+                            </code>
+                        </pre>
+                        <code class="place-wide fragment"
+                              style="justify-self: center; font-size: 0.6em; display: inline-block"
+                              data-trim
+                        >
+                            Send this to Person@df8b50a.
+                        </code>
+                        <div class="place-wide fragment" data-markdown>
+                            What is this `s"..."`?
+                        </div>
+                    </section>
+                    <section class="grid-layout title-and-side-by-side" data-auto-animate>
+                        <h2>How does string interpolation work?</h2>
+                        <div class="place-wide" data-markdown>
+                            What is this `s"..."`?
+                        </div>
+                        <div class="fragment" data-markdown>
+                            It's a `StringContext`!
+                        </div>
+                        <pre class="fragment">
+                            <code class="hljs scala" data-trim data-line-numbers>
+                                package scala
+
+                                case class StringContext(parts: String*) {
+                                  def s(args: Any*): String = ...
+                                    // It just calls toString on all the args.
+                                }
+                            </code>
+                        </pre>
+                        <div class="fragment place-wide">
+                            An example is in order.
+                        </div>
+                        <pre class="fragment">
+                            <code class="hljs scala" data-trim data-line-numbers>
+                                s"I saw $p1 gossip about $p2."
+                            </code>
+                        </pre>
+                        <pre class="fragment">
+                            <code class="hljs scala" data-trim data-line-numbers>
+                                StringContext("I saw ", " gossip about ", ".")
+                                  .s(p1, p2)
+                            </code>
+                        </pre>
+                    </section>
+                    <section class="grid-layout title-and-side-by-side" data-auto-animate>
+                        <h2>How does string interpolation work?</h2>
+                        <div class="place-wide" data-markdown>
+                            It's just syntactic sugar.
+                        </div>
+
+                        <pre>
+                            <code class="hljs scala" data-trim data-line-numbers>
+                                foobar"I saw $p1 greet $p2."
+                            </code>
+                        </pre>
+                        <pre>
+                            <code class="hljs scala" data-trim data-line-numbers>
+                                StringContext("I saw ", " greet ", ".")
+                                  .foobar(p1, p2)
+                            </code>
+                        </pre>
+                        <div></div>
+                        <div class="fragment" data-markdown>
+                            Of course, `foobar` doesn't exist
+                        </div>
+                        <div></div>
+                        <div class="fragment" data-markdown>
+                            ... but if it did?
+                        </div>
+                        <div></div>
+                        <div class="fragment" data-markdown>
+                            Hold that thought.
+                        </div>
+                    </section>
+                </section>
+
+                <section class="grid-layout title-page">
+                    <div>
+                        <h1>Part 2</h1>
+                        <h3>The problem</h3>
+                    </div>
+                </section>
+
+                <section>
+
+                    <section class="grid-layout title-and-side-by-side" data-auto-animate>
+                        <h2>The problem</h2>
+                        <div class="place-wide" data-markdown style="text-align: left">
+                            It's usually good to wrap general types in case classes.
+                        </div>
+
+                        <div class="overlap-children place-wide" style="width: 100%">
+                            <pre class="fragment place-wide fade-in-then-out">
+                                <code class="hljs scala" data-trim data-line-numbers>
+                                    def greetPerson(name: String, greeting: String) =
+                                        println("$greeting to you, $name!")
+                                </code>
+                            </pre>
+                            <pre class="fragment place-wide fade-in-then-out">
+                                <code class="hljs scala" data-trim data-line-numbers>
+                                    def greetPerson(name: String, greeting: String) =
+                                        println("$greeting to you, $name!")
+
+                                    greetPerson("Good morning", "Anton")
+                                </code>
+                            </pre>
+                            <pre class="fragment place-wide fade-in-then-out">
+                                <code class="hljs scala" data-trim data-line-numbers>
+                                    def greetPerson(name: String, greeting: String) =
+                                        println("$greeting to you, $name!")
+
+                                    greetPerson("Good morning", "Anton") // Prints: Anton to you, Good morning!
+                                </code>
+                            </pre>
+                            <pre class="fragment place-wide fade-in-then-out">
+                                <code class="hljs scala" data-trim data-line-numbers>
+                                    &nbsp;
+
+
+                                    def greetPerson(name: String, greeting: String) =
+                                        println("$greeting to you, $name!")
+
+                                    greetPerson("Good morning", "Anton") // Prints: Anton to you, Good morning!
+                                </code>
+                            </pre>
+                            <pre class="fragment fade-in-then-out">
+                                <code class="hljs scala" data-trim data-line-numbers="1-2">
+                                    final case class Name(value: String)
+                                    final case class Greeting(value: String)
+
+                                    def greetPerson(name: String, greeting: String) =
+                                        println("$greeting to you, $name!")
+
+                                    greetPerson("Good morning", "Anton")
+                                </code>
+                            </pre>
+                            <pre class="fragment fade-in-then-out">
+                                <code class="hljs scala" data-trim data-line-numbers="4">
+                                    final case class Name(value: String)
+                                    final case class Greeting(value: String)
+
+                                    def greetPerson(name: Name, greeting: Greeting) =
+                                        println("$greeting to you, $name!")
+
+                                    greetPerson("Good morning", "Anton")
+                                </code>
+                            </pre>
+                            <pre class="fragment fade-in-then-out">
+                                <code class="hljs scala" data-trim data-line-numbers="7">
+                                    final case class Name(value: String)
+                                    final case class Greeting(value: String)
+
+                                    def greetPerson(name: Name, greeting: Greeting) =
+                                        println("$greeting to you, $name!")
+
+                                    greetPerson("Good morning", "Anton") // Compiler forces case classes.
+                                </code>
+                            </pre>
+                            <pre class="fragment fade-in-then-out">
+                                <code class="hljs scala" data-trim data-line-numbers="7">
+                                    final case class Name(value: String)
+                                    final case class Greeting(value: String)
+
+                                    def greetPerson(name: Name, greeting: Greeting) =
+                                        println("$greeting to you, $name!")
+
+                                    greetPerson(Greeting("Good morning"), Name("Anton"))
+                                </code>
+                            </pre>
+                            <pre class="fragment fade-in-then-out">
+                                <code class="hljs scala" data-trim data-line-numbers="7">
+                                    final case class Name(value: String)
+                                    final case class Greeting(value: String)
+
+                                    def greetPerson(name: Name, greeting: Greeting) =
+                                        println("$greeting to you, $name!")
+
+                                    greetPerson(Greeting("Good morning"), Name("Anton")) // Compiler error!
+                                </code>
+                            </pre>
+                            <pre class="fragment fade-in-then-out">
+                                <code class="hljs scala" data-trim data-line-numbers="8">
+                                    final case class Name(value: String)
+                                    final case class Greeting(value: String)
+
+                                    def greetPerson(name: Name, greeting: Greeting) =
+                                        println("$greeting to you, $name!")
+
+                                    greetPerson(Greeting("Good morning"), Name("Anton")) // Compiler error!
+                                    greetPerson(Name("Anton"), Greeting("Good morning")) // Works!
+                                </code>
+                            </pre>
+                            <pre class="fragment fade-in-then-out">
+                                <code class="hljs scala" data-trim data-line-numbers="8-9">
+                                    final case class Name(value: String)
+                                    final case class Greeting(value: String)
+
+                                    def greetPerson(name: Name, greeting: Greeting) =
+                                        println("$greeting to you, $name!")
+
+                                    greetPerson(Greeting("Good morning"), Name("Anton")) // Compiler error!
+                                    greetPerson(Name("Anton"), Greeting("Good morning")) // Works!
+                                    // ... or does it?
+                                </code>
+                            </pre>
+                            <pre class="fragment fade-in-then-out">
+                                <code class="hljs scala" data-trim data-line-numbers="8-9">
+                                    final case class Name(value: String)
+                                    final case class Greeting(value: String)
+
+                                    def greetPerson(name: Name, greeting: Greeting) =
+                                        println("$greeting to you, $name!")
+
+
+                                    greetPerson(Name("Anton"), Greeting("Good morning"))
+                                    // Prints: Greeting(Good morning) to you, Person(Anton)!
+                                </code>
+                            </pre>
+                            <pre class="fragment">
+                                <code class="hljs scala" data-trim data-line-numbers="5,9">
+                                    final case class Name(value: String)
+                                    final case class Greeting(value: String)
+
+                                    def greetPerson(name: Name, greeting: Greeting) =
+                                        println("${greeting.value} to you, ${name.value}!")
+
+
+                                    greetPerson(Name("Anton"), Greeting("Good morning"))
+                                    // Prints: Good morning to you, Anton!
+                                </code>
+                            </pre>
+                        </div>
+                        <div class="fragment place-wide">
+                            We fixed one bug, but introduced another by mistake.
+                        </div>
+                    </section>
+
+                    <section class="grid-layout title-and-side-by-side" data-auto-animate>
+                        <h2>The problem</h2>
+                        <div class="place-wide">
+                            String interpolation and string concatenation are bug-prone.
+                        </div>
+                        <div class="fragment place-wide">
+                            Always unit test business-relevant string operations.
+                        </div>
+                        <div class="place-wide" style="width: 100%; text-align: left;">
+                            <div class="fragment">
+                                But can we do anything to make this safer?
+                            </div>
+                            <div class="fragment">
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;... to make the compiler validate such mistakes?
+                            </div>
+                        </div>
+                    </section>
+                </section>
+
+                <section class="grid-layout title-page">
+                    <div>
+                        <h1>Part 3</h1>
+                        <h3>In search of a solution</h3>
+                    </div>
+                </section>
+
+                <section class="grid-layout title-and-side-by-side">
+                    <h2>Solution requirements</h2>
+                    <div class="place-wide overlap-children" style="width: 100%; align-items: stretch;">
+                        <div>
+                            <ul class="place-wide">
+                                <li class="fragment" data-markdown>We don't change the built-in behaviour of `s"..."`.</li>
+                                <li class="fragment" data-markdown>Solution is as easy to read as `s"..."`.</li>
+                                <li class="fragment" data-markdown>Solution relies on compile-time validation.</li>
+                                <ul>
+                                    <li class="fragment" data-markdown>Validation forbids using any values without an _obvious and unambiguous_ `toString` implementation.</li>
+                                </ul>
+                                <li class="fragment" data-markdown>Use of solution can be spotted without an IDE.</li>
+                                <ul>
+                                    <li class="fragment" data-markdown>Code reviewers on GitHub can reliably see where you're using this validation and where you aren't.</li>
+                                </ul>
+                            </ul>
+                        </div>
+                        <div class="fragment overlap-children" style="display: grid; align-items: stretch; width: 100%;">
+                            <div style="width: 100%; z-index: 99; background-color: var(--r-background-color); opacity: 0.9;">
+                            </div>
+                            <div style="display: grid; align-items: center; text-align: center; width: 100%; z-index: 100;">
+                                <h2>Can this really be done?<br/><br/></h2>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="grid-layout title-and-side-by-side" data-auto-animate>
+                    <h2>What our solution needs to look like</h2>
+                    <pre class="fragment place-wide">
+                        <code class="hljs scala" data-trim data-line-numbers="4,5|4,6|4,7|1-2,4,8|1-2,10,11-15|1-2,17-19|">
+                            final case class SomeClass(value: String)
+                            val wrapped = SomeClass("hello")
+
+                            // Compiles:
+                            safe"Integers:                ${1} + ${6L} = ${BigInt(1 + 6)}"
+                            safe"Strings:                 ${"Hello"} ${"world"} ${"!"}"
+                            safe"Character sequences:     ${new StringBuilder("Initial string")}"
+                            safe"Unwrapping valid values: ${wrapped.value}"
+
+                            // Does not compile:
+                            safe"Doubles:           ${3.5}"
+                            safe"Boolean:           ${true}"
+                            safe"Unit:              ${()}"
+                            safe"Lists:             ${List(1, 2, 3)}"
+                            safe"All other classes: $wrapped"
+
+                            // For the forbidden types, explicitly call toString, or use s"":
+                            safe"Using explicit toString is allowed: ${wrapped.toString}"
+                            s"The normal string interpolator isn't going anywhere: ${wrapped}"
+                        </code>
+                    </pre>
+                </section>
+
+                <section class="grid-layout title-and-side-by-side" data-auto-animate>
+                    <h2>What our solution needs to look like</h2>
+                    <div class="place-wide" data-markdown style="text-align: left">
+                        - This looks like a string context method:
+                          - `StringContext(...).safe(allowed args)`.
+                    </div>
+                    <div class="fragment place-wide" data-markdown style="text-align: left">
+                        We have two issues.
+                    </div>
+                    <div class="fragment place-wide" data-markdown style="text-align: left">
+                        - The class `StringContext` is not ours.
+                          - We can't declare new methods inside it.
+                    </div>
+                    <div class="fragment place-wide" data-markdown style="text-align: left">
+                        - How do we declare a method that takes any combination of unrelated types?
+                          - It needs to accept a mix of `String`, `Int`, `BigInt`, `Long`, `CharSequence`, but nothing else!
+                    </div>
+                </section>
+
+                <section class="grid-layout title-page" data-transition="zoom-in slide-out" data-transition-speed="fast">
+                    <h2>Implicits to the rescue!</h2>
+                </section>
+
+                <section class="grid-layout title-and-side-by-side">
+                    <h2>Implicit classes</h2>
+                    <div class="fragment" data-markdown style="align-self: center">
+                        - Allow extending existing types with new methods.
+                    </div>
+                    <pre class="fragment" style="align-self: center">
+                        <code class="hljs scala" data-trim data-line-numbers>
+                            implicit final class RichString(myString: String) {
+                              def greet(): Unit = println(s"Hello $myString!")
+                            }
+
+                            "Maya".greet() // Prints: Hello Maya!
+                        </code>
+                    </pre>
+                    <div class="fragment" data-markdown style="align-self: center">
+                        - The implicit has to be available.
+                          - Where Scala looks for implicits is complicated.
+                    </div>
+                    <pre class="fragment" style="align-self: center">
+                        <code class="hljs scala" data-trim data-line-numbers>
+                            object GreetingOps {
+                                implicit final class RichString(myString: String) {
+                                  def greet(): Unit = println(s"Hello $myString!")
+                                }
+                            }
+
+                            "Maya".greet() // Does not compile.
+
+                            import GreetingOps._
+                            "Sumiko".greet() // Prints: Hello Sumiko!
+                        </code>
+                    </pre>
+                </section>
+
+                <section class="grid-layout title-and-side-by-side">
+                    <h2>Implicit conversions</h2>
+                    <div class="fragment" data-markdown style="align-self: center">
+                        - Allows using the wrong type where another type is expected.
+                    </div>
+                    <pre class="fragment" style="align-self: center">
+                        <code class="hljs scala" data-trim data-line-numbers>
+                            import scala.language.implicitConversions
+
+                            implicit def intToString(value: Int): String = value.toString
+
+                            val myString: String = 4
+                        </code>
+                    </pre>
+                    <div class="fragment place-wide" data-markdown style="align-self: center">
+                        - Also has to be imported / available in scope.
+                    </div>
+                    <div class="fragment place-wide" data-markdown style="align-self: center">
+                        - Best avoided unless there is no other solution.
+                    </div>
+                    <div class="fragment place-wide" data-markdown style="align-self: center; padding-left: 2em;">
+                        - We need it.
+                    </div>
+                </section>
+
+                <section class="grid-layout title-and-side-by-side">
+                    <h2>Implicits without importing?</h2>
+                    <div class="place-wide">
+                        <ul>
+                            <li class="fragment">How to make an implicit available without having to import it?</li>
+                            <ul>
+                                <li class="fragment">Put it in the companion object of a related type.</li>
+                            </ul>
+                        </ul>
+                    </div>
+                    <pre class="fragment place-wide">
+                        <code class="hljs scala" data-trim data-line-numbers="1|2,7|2-7|9">
+                            final case class MyStringWrapper(value: String)
+                            object MyStringWrapper {
+                              import scala.language.implicitConversions
+
+                              implicit def stringToWrapper(string: String): MyStringWrapper =
+                                MyStringWrapper(string)
+                            }
+
+                            val wrapper: MyStringWrapper = "Hello"
+                        </code>
+                    </pre>
+                </section>
+
+                <section class="grid-layout title-page">
+                    <h2>We have our building blocks</h2>
+                </section>
+
+                <section class="grid-layout title-and-side-by-side">
+                    <h2>Building a solution</h2>
+                    <div class="place-wide overlap-children" style="width: 100%">
+                        <pre class="fragment">
+                            <code class="hljs scala" data-trim data-line-numbers>
+                                object SafeInterpolatorOps {
+
+                                }
+                            </code>
+                        </pre>
+                        <pre class="fragment">
+                            <code class="hljs scala" data-trim data-line-numbers="2-4">
+                                object SafeInterpolatorOps {
+                                  implicit final class RichStringContextWithSafe(context: StringContext) {
+                                    def safe(args: SomethingSafeToToString*): String = ???
+                                  }
+                                }
+                            </code>
+                        </pre>
+                        <pre class="fragment">
+                            <code class="hljs scala" data-trim data-line-numbers="3">
+                                object SafeInterpolatorOps {
+                                  implicit final class RichStringContextWithSafe(context: StringContext) {
+                                    def safe(args: SomethingSafeToToString*): String = context.s(args: _*)
+                                  }
+                                }
+                            </code>
+                        </pre>
+                        <pre class="fragment">
+                            <code class="hljs scala" data-trim data-line-numbers="3,6-8">
+                                object SafeInterpolatorOps {
+                                  implicit final class RichStringContextWithSafe(context: StringContext) {
+                                    def safe(args: SafeWrapper*): String = context.s(args: _*)
+                                  }
+
+                                  final class SafeWrapper private(wrapped: Any) {
+
+                                  }
+                                }
+                            </code>
+                        </pre>
+                        <pre class="fragment">
+                            <code class="hljs scala" data-trim data-line-numbers="7">
+                                object SafeInterpolatorOps {
+                                  implicit final class RichStringContextWithSafe(context: StringContext) {
+                                    def safe(args: SafeWrapper*): String = context.s(args: _*)
+                                  }
+
+                                  final class SafeWrapper private(wrapped: Any) {
+                                    override def toString: String = wrapped.toString
+                                  }
+                                }
+                            </code>
+                        </pre>
+                        <pre class="fragment">
+                            <code class="hljs scala" data-trim data-line-numbers="9-12">
+                                object SafeInterpolatorOps {
+                                  implicit final class RichStringContextWithSafe(context: StringContext) {
+                                    def safe(args: SafeWrapper*): String = context.s(args: _*)
+                                  }
+
+                                  final class SafeWrapper private(wrapped: Any) {
+                                    override def toString: String = wrapped.toString
+                                  }
+                                  object SafeWrapper {
+                                    import scala.language.implicitConversions
+
+                                  }
+                                }
+                            </code>
+                        </pre>
+                        <pre class="fragment">
+                            <code class="hljs scala" data-trim data-line-numbers="12">
+                                object SafeInterpolatorOps {
+                                  implicit final class RichStringContextWithSafe(context: StringContext) {
+                                    def safe(args: SafeWrapper*): String = context.s(args: _*)
+                                  }
+
+                                  final class SafeWrapper private(wrapped: Any) {
+                                    override def toString: String = wrapped.toString
+                                  }
+                                  object SafeWrapper {
+                                    import scala.language.implicitConversions
+
+                                    implicit def fromInt(value: Int): SafeWrapper = new SafeWrapper(value)
+                                  }
+                                }
+                            </code>
+                        </pre>
+                        <pre class="fragment">
+                            <code class="hljs scala" data-trim data-line-numbers="13">
+                                object SafeInterpolatorOps {
+                                  implicit final class RichStringContextWithSafe(context: StringContext) {
+                                    def safe(args: SafeWrapper*): String = context.s(args: _*)
+                                  }
+
+                                  final class SafeWrapper private(wrapped: Any) {
+                                    override def toString: String = wrapped.toString
+                                  }
+                                  object SafeWrapper {
+                                    import scala.language.implicitConversions
+
+                                    implicit def fromInt(value: Int): SafeWrapper = new SafeWrapper(value)
+                                    implicit def fromLong(value: Long): SafeWrapper = new SafeWrapper(value)
+                                  }
+                                }
+                            </code>
+                        </pre>
+                        <pre class="fragment">
+                            <code class="hljs scala" data-trim data-line-numbers="14">
+                                object SafeInterpolatorOps {
+                                  implicit final class RichStringContextWithSafe(context: StringContext) {
+                                    def safe(args: SafeWrapper*): String = context.s(args: _*)
+                                  }
+
+                                  final class SafeWrapper private(wrapped: Any) {
+                                    override def toString: String = wrapped.toString
+                                  }
+                                  object SafeWrapper {
+                                    import scala.language.implicitConversions
+
+                                    implicit def fromInt(value: Int): SafeWrapper = new SafeWrapper(value)
+                                    implicit def fromLong(value: Long): SafeWrapper = new SafeWrapper(value)
+                                    implicit def fromBigInt(value: BigInt): SafeWrapper = new SafeWrapper(value)
+                                  }
+                                }
+                            </code>
+                        </pre>
+                        <pre class="fragment">
+                            <code class="hljs scala" data-trim data-line-numbers="15">
+                                object SafeInterpolatorOps {
+                                  implicit final class RichStringContextWithSafe(context: StringContext) {
+                                    def safe(args: SafeWrapper*): String = context.s(args: _*)
+                                  }
+
+                                  final class SafeWrapper private(wrapped: Any) {
+                                    override def toString: String = wrapped.toString
+                                  }
+                                  object SafeWrapper {
+                                    import scala.language.implicitConversions
+
+                                    implicit def fromInt(value: Int): SafeWrapper = new SafeWrapper(value)
+                                    implicit def fromLong(value: Long): SafeWrapper = new SafeWrapper(value)
+                                    implicit def fromBigInt(value: BigInt): SafeWrapper = new SafeWrapper(value)
+                                    implicit def fromCharSeq(value: CharSequence): SafeWrapper = new SafeWrapper(value)
+                                  }
+                                }
+                            </code>
+                        </pre>
+                        <pre class="fragment">
+                            <code class="hljs scala" data-trim data-line-numbers>
+                                object SafeInterpolatorOps {
+                                  implicit final class RichStringContextWithSafe(context: StringContext) {
+                                    def safe(args: SafeWrapper*): String = context.s(args: _*)
+                                  }
+
+                                  final class SafeWrapper private(wrapped: Any) {
+                                    override def toString: String = wrapped.toString
+                                  }
+                                  object SafeWrapper {
+                                    import scala.language.implicitConversions
+
+                                    implicit def fromInt(value: Int): SafeWrapper = new SafeWrapper(value)
+                                    implicit def fromLong(value: Long): SafeWrapper = new SafeWrapper(value)
+                                    implicit def fromBigInt(value: BigInt): SafeWrapper = new SafeWrapper(value)
+                                    implicit def fromCharSeq(value: CharSequence): SafeWrapper = new SafeWrapper(value)
+                                  }
+                                }
+                            </code>
+                        </pre>
+                    </div>
+                </section>
+
+                <section class="grid-layout title-page">
+                    <div>
+                        <h2>Questions?</h2>
+                        <a href="https://scastie.scala-lang.org/tDPX3rcPSD6UU1q7eKVlcg" target="_blank">Demo link</a>
+                    </div>
+                </section>
+            </div>
+
+        </div>
+
+        <script src="dist/reveal.js"></script>
+        <script src="plugin/zoom/zoom.js"></script>
+        <script src="plugin/notes/notes.js"></script>
+        <script src="plugin/search/search.js"></script>
+        <script src="plugin/markdown/markdown.js"></script>
+        <script src="plugin/highlight/highlight.js"></script>
+        <script>
+
+            // Also available as an ES module, see:
+            // https://revealjs.com/initialization/
+            Reveal.initialize({
+                controls: true,
+                progress: true,
+                center: false,
+                hash: true,
+                disableLayout: false,
+
+                width: 1920 * 0.7,
+                height: 1080 * 0.7,
+
+                // Learn about plugins: https://revealjs.com/plugins/
+                plugins: [ RevealZoom, RevealNotes, RevealSearch, RevealMarkdown, RevealHighlight ]
+            });
+
+        </script>
+
+    </body>
+</html>
