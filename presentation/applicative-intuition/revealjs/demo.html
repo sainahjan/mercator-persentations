@@ -1,0 +1,361 @@
+<!doctype html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+
+        <title>reveal.js – The HTML Presentation Framework</title>
+
+        <meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+        <meta name="author" content="Hakim El Hattab">
+
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" href="dist/reset.css">
+        <link rel="stylesheet" href="dist/reveal.css">
+        <link rel="stylesheet" href="dist/theme/white.css" id="theme">
+
+        <!-- Theme used for syntax highlighting of code -->
+        <link rel="stylesheet" href="plugin/highlight/monokai.css">
+
+        <style>
+            h1, h2, h3, h4, h5, h6 {
+                text-transform: none !important;
+            }
+
+            :not(pre) > code {
+                color: #f92672;
+            }
+
+            .reveal pre[data-auto-animate-target] {
+                overflow: visible;
+            }
+
+            .reveal pre code {
+                max-height: none;
+                max-width: none;
+            }
+        </style>
+        <style>
+            * {
+                box-sizing: border-box;
+            }
+
+            .overlap-children {
+                display: grid !important;
+                grid-template-areas: "area";
+                align-items: start;
+                justify-items: start;
+            }
+            .overlap-children > * {
+                grid-area: area;
+                margin-left: 0 !important;
+            }
+
+            .grid-layout {
+                display: grid !important;
+                width: 100%;
+                height: 100%;
+                padding: 1em;
+            }
+
+            .grid-layout > * {
+                margin-left: 0 !important;
+            }
+
+            .grid-layout code {
+                min-width: fit-content;
+            }
+
+            .grid-layout.title-page {
+                grid-template-columns: auto auto auto;
+                grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+                grid-template-areas:
+                        ".......... .......... .........."
+                        "title      title      title     "
+                        "only-title only-title only-title"
+                        ".......... subtitle   subtitle  "
+                        ".......... .......... ..........";
+                align-items: center;
+            }
+            .grid-layout.title-page > :only-child {
+                grid-area: only-title;
+            }
+            .grid-layout.title-page > :nth-child(1):not(:only-child) {
+                grid-area: title;
+            }
+            .grid-layout.title-page > :nth-child(2) {
+                grid-area: subtitle;
+            }
+
+            .grid-layout.title-and-side-by-side {
+                grid-template-columns: auto auto;
+                grid-template-rows: min-content;
+                grid-auto-rows: auto;
+                grid-template-areas:
+                        "title      title     "
+                        ".......... ..........";
+                grid-auto-flow: row;
+                grid-gap: 10px;
+            }
+            .grid-layout.title-and-side-by-side > :nth-child(1) {
+                grid-area: title;
+                align-self: center;
+                justify-self: start;
+            }
+            .grid-layout.title-and-side-by-side > :not(:nth-child(1)) {
+                align-self: start;
+                justify-self: start;
+            }
+            .grid-layout.title-and-side-by-side > .place-wide:not(:nth-child(1)) {
+                grid-column-start: 1;
+                grid-column-end: 3;
+            }
+        </style>
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+        <style>
+            section {
+                font-family: Roboto, sans-serif;
+            }
+            h2, h3, h4, h5, h6 {
+                font-weight: normal !important;
+            }
+        </style>
+    </head>
+
+    <body>
+
+        <div class="reveal">
+
+            <!-- Any section element inside of this container is displayed as a slide -->
+            <div class="slides">
+                <section class="grid-layout title-page" data-transition="fade" data-transition-speed="fast">
+                    <h2>Applicative</h2>
+                </section>
+
+                <section class="grid-layout title-and-side-by-side" data-transition="fade" data-transition-speed="fast">
+                    <h2>Applicative</h2>
+                    <div class="place-wide" style="position: relative; width: 100%; height: 100%">
+                        <div style="position: absolute; left: 5%; top: 15%; rotate: -45deg">Monads</div>
+                        <div style="position: absolute; left: 20%; top: 75%; rotate: -30deg">Category&nbsp;Theory</div>
+                        <div style="position: absolute; left: 30%; top: 40%; rotate: 20deg">Applicative[F[_]]</div>
+                        <div style="position: absolute; left: 60%; top: 0; rotate: 60deg">Functors</div>
+                        <div style="position: absolute; left: 80%; top: 20%; rotate: -60deg">Type&nbsp;Classes</div>
+                        <div style="position: absolute; left: 70%; top: 50%; rotate: -15deg">
+                            <img src="presentation/slide-2-applicative/diagram.svg" alt=""/>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="grid-layout title-and-side-by-side" data-transition="fade" data-transition-speed="fast">
+                    <h2 style="position: relative;">
+                        Slime m<span style="user-select: none; position: absolute; display: inline-block;">
+                        <img src="presentation/slide-3-slime-monster/slime-frowny.svg"
+                             alt
+                             style="position: relative; left: 0.12em; top: 0.18em;"
+                        />
+                    </span>onster
+                    </h2>
+                    <div>
+                        <img src="presentation/slide-3-slime-monster/shining-slime-example.svg" alt/>
+                    </div>
+                    <div data-markdown style="text-align: left">
+                        It can:
+                        - eat
+                        - digest
+                        - merge with its brethren
+                    </div>
+                    <div class="place-wide" data-markdown>
+                        - release of treasure not guaranteed &amp; requires negotiation.
+                    </div>
+                </section>
+
+                <section class="grid-layout title-and-side-by-side" data-transition="fade" data-transition-speed="fast">
+                    <h2>Eating habits</h2>
+                    <div class="place-wide">
+                        <ul>
+                            <li>not fussy</li>
+                        </ul>
+                    </div>
+                    <div class="place-wide">
+                        <ul>
+                            <li>
+                                wraps around any
+                                <div class="overlap-children" style="display: inline-grid !important; align-items: center; justify-items: center">
+                                    <span style="user-select: none">valuables</span>
+                                    <span style="position: absolute; user-select: none">
+                                        <img src="presentation/slide-4-eating-habits/values-not-valuables.svg"
+                                             alt
+                                             style="position: relative; width: 7em; margin: 0; left: 0.5em; top: -0.4em; pointer-events: none"
+                                        />
+                                    </span>
+                                    <span style="position: relative; left: 0.3em; top: -1.7em; rotate: -10deg; font-size: 0.8em; color: transparent;">
+                                        values
+                                    </span>
+                                </div>
+                                you give it
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="place-wide" style="display: flex; width: 100%; justify-content: space-evenly; align-items: center">
+                        <img alt src="presentation/slide-4-eating-habits/unwrapped-sword.svg"/>
+                        <div class="overlap-children" style="align-items: center; justify-items: center; padding-right: 70px">
+                            <code style="display: block;">pure( )</code>
+                            <div style="width: 230px; height: 150px">
+                                <svg width="300px" height="150px" preserveAspectRatio="none" viewbox="0,0,30,15">
+                                    <g stroke="#000" stroke-width="0.3" fill="transparent">
+                                        <polygon points="1,4 15,4 15,1 15,1 29,7.5 15,14 15,11 1,11"/>
+                                    </g>
+                                </svg>
+                            </div>
+                        </div>
+                        <img alt src="presentation/slide-4-eating-habits/wrapped-sword.svg"/>
+                    </div>
+                </section>
+
+                <section class="grid-layout title-and-side-by-side" data-transition="fade" data-transition-speed="fast">
+                    <h2>Digestion</h2>
+                    <div class="place-wide">
+                        <ul>
+                            <li>you provide the enzymes</li>
+                        </ul>
+                    </div>
+                    <div class="place-wide">
+                        <ul>
+                            <li>given the chance, will also break down the analogy</li>
+                        </ul>
+                    </div>
+                    <div class="place-wide" style="display: flex; transform: scale(0.6); width: 100%; justify-content: space-evenly; align-items: center; gap: 10px;">
+                        <img alt src="presentation/slide-5-digestion/slime-with-crystal.svg"/>
+                        <div class="overlap-children" style="align-items: center; justify-items: center; padding-right: 70px">
+                            <div style="display: flex; align-items: center; gap: 10px">
+                                <img alt src="presentation/slide-5-digestion/crystal-mini.svg">
+                                ⇒
+                                <img alt src="presentation/slide-5-digestion/lightsaber-mini.svg">
+                            </div>
+                            <div style="width: 230px; height: 150px">
+                                <svg width="300px" height="150px" preserveAspectRatio="none" viewbox="0,0,30,15">
+                                    <g stroke="#000" stroke-width="0.3" fill="transparent">
+                                        <polygon points="1,4 15,4 15,1 15,1 29,7.5 15,14 15,11 1,11"/>
+                                    </g>
+                                </svg>
+                            </div>
+                        </div>
+                        <img alt src="presentation/slide-5-digestion/slime-with-lightsaber.svg"/>
+                        <div class="overlap-children" style="align-items: center; justify-items: center; padding-right: 70px">
+                            <div style="display: flex; align-items: center; gap: 10px">
+                                <img alt src="presentation/slide-5-digestion/lightsaber-mini.svg">
+                                ⇒
+                                <img alt src="presentation/slide-5-digestion/ellipsis-mini.svg">
+                            </div>
+                            <div style="width: 230px; height: 150px">
+                                <svg width="300px" height="150px" preserveAspectRatio="none" viewbox="0,0,30,15">
+                                    <g stroke="#000" stroke-width="0.3" fill="transparent">
+                                        <polygon points="1,4 15,4 15,1 15,1 29,7.5 15,14 15,11 1,11"/>
+                                    </g>
+                                </svg>
+                            </div>
+                        </div>
+                        <img alt src="presentation/slide-5-digestion/slime-with-ellipsis.svg"/>
+                    </div>
+                </section>
+
+                <section class="grid-layout title-and-side-by-side" data-transition="fade" data-transition-speed="fast">
+                    <h2>Merging with its brethren</h2>
+                    <div class="place-wide">
+                        <ul>
+                            <li>they need to recognise each other</li>
+                        </ul>
+                    </div>
+                    <div class="place-wide">
+                        <ul>
+                            <li>there are many ways for them to do this</li>
+                        </ul>
+                    </div>
+                    <div class="place-wide" style="width: 100%">
+                        <div style="display: grid; grid-auto-flow: column; width: 100%; justify-content: space-evenly; align-items: center;">
+                            <img alt src="presentation/slide-6-merging-with-its-brethren/slime-lightsaber-blue.svg"/>
+                            <img alt src="presentation/slide-6-merging-with-its-brethren/operation-plus.svg"/>
+                            <img alt src="presentation/slide-6-merging-with-its-brethren/slime-smooth-and-desperate.svg"/>
+                            <img alt src="presentation/slide-6-merging-with-its-brethren/operation-arrow.svg"/>
+                            <img alt src="presentation/slide-6-merging-with-its-brethren/slime-reunited-with-lightsaber.svg"/>
+                        </div>
+                    </div>
+                    <div class="place-wide" style="width: 100%">
+                        <div style="display: grid; grid-auto-flow: column; width: 100%; justify-content: space-evenly; align-items: center;">
+                            <img alt src="presentation/slide-6-merging-with-its-brethren/slime-lightsaber-red.svg"/>
+                            <img alt src="presentation/slide-6-merging-with-its-brethren/operation-plus.svg"/>
+                            <img alt src="presentation/slide-6-merging-with-its-brethren/slime-spiky-and-desperate.svg"/>
+                            <img alt src="presentation/slide-6-merging-with-its-brethren/operation-arrow.svg"/>
+                            <img alt src="presentation/slide-6-merging-with-its-brethren/slime-unavailable.svg"/>
+                        </div>
+                    </div>
+
+                </section>
+
+                <section class="grid-layout title-and-side-by-side" data-transition="fade" data-transition-speed="fast" style="grid-template-columns: 1fr 1fr; gap: 0;">
+                    <h2>Might not know how to digest other slimes</h2>
+                    <small></small>
+                    <small style="text-align: left">
+                        Monads are special applicatives who CAN absorb their brethren and steal their treasures.
+                    </small>
+                    <img alt src="presentation/slide-7-monads/non-monads.svg" style="justify-self: end; margin: 0;"/>
+                    <img alt src="presentation/slide-7-monads/monads.svg" style="justify-self: start; margin: 0;"/>
+                    <small data-markdown style="text-align: center; padding: 0 1em; width: 100%">
+                        No `flatMap`/`flatten`.
+                    </small>
+                    <small data-markdown style="text-align: left; padding: 0 1em; width: 100%">
+                        Monad has `flatMap`/`flatten`.
+
+                        Monads are intrinsically aggressive to their brethren.
+                    </small>
+                </section>
+
+                <section class="grid-layout title-page" data-transition="none">
+                    <div>
+                        <h2>Questi<span style="user-select: none; position: absolute; display: inline-block;">
+                        <img src="presentation/slide-8-questions/slime-puzzly.svg"
+                             alt
+                             style="position: relative; left: 0.12em; top: 0.18em;"
+                        />
+                    </span>ons?</h2>
+                    </div>
+                </section>
+            </div>
+
+        </div>
+
+        <script src="dist/reveal.js"></script>
+        <script src="plugin/zoom/zoom.js"></script>
+        <script src="plugin/notes/notes.js"></script>
+        <script src="plugin/search/search.js"></script>
+        <script src="plugin/markdown/markdown.js"></script>
+        <script src="plugin/highlight/highlight.js"></script>
+        <script>
+
+            // Also available as an ES module, see:
+            // https://revealjs.com/initialization/
+            Reveal.initialize({
+                controls: true,
+                progress: true,
+                center: false,
+                hash: true,
+                disableLayout: false,
+
+                width: 1920 * 0.7,
+                height: 1080 * 0.7,
+
+                // Learn about plugins: https://revealjs.com/plugins/
+                plugins: [ RevealZoom, RevealNotes, RevealSearch, RevealMarkdown, RevealHighlight ]
+            });
+
+        </script>
+
+    </body>
+</html>
