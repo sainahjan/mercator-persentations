@@ -28,7 +28,6 @@
 
             :not(pre) > code {
                 color: #f92672;
-                font-size: calc(1em * 0.9);
             }
 
             .reveal pre[data-auto-animate-target] {
@@ -125,15 +124,16 @@
             <!-- Any section element inside of this container is displayed as a slide -->
             <div class="slides">
                 <section class="grid-layout title-page">
-                    <h2>Basic title</h2>
-                    <h6>Basic subtitle</h6>
+                    <h2 data-markdown>Basic `title`</h2>
+                    <h6 data-markdown>Basic `subtitle`</h6>
                 </section>
 
                 <section class="grid-layout title-and-side-by-side">
-                    <h2>Some title</h2>
+                    <h2>Some title <code>.title</code> _<code>_</code></h2>
                     <div class="fragment place-wide" data-markdown>
-                        - Bullet point
+                        - Bullet point `with code` code and `.flatMap_`_.
                     </div>
+                    <small class="fragment" data-markdown>Hello `small` code _`_`</small>
                     <div class="fragment place-wide" data-markdown>
                         - Bullet point
                           - Bullet point
