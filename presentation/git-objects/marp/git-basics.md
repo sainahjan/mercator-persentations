@@ -1,0 +1,524 @@
+---
+# https://marpit.marp.app/directives
+marp: true
+
+paginate: true
+theme: uncover
+style: |
+  /* https://github.com/marp-team/marp-core/blob/main/themes/uncover.scss */
+  :root {
+    --color-background: #ddd;
+    --color-background-code: #ccc;
+    --color-background-paginate: #dadada;
+    --color-foreground: #345;
+    --color-highlight: #9ac;
+    --color-highlight-hover: #aaf;
+    --color-highlight-heading: #9ac;
+    --color-header: #bbb;
+    --color-header-shadow: transparent;
+  }
+  section:has(:not(h1,h2,h3,h4,h5,h6)) {
+    text-align: left;
+  }
+  
+  /* Make first headings left-aligned.
+   * Taken from (with some generalisations):
+   * https://github.com/orgs/marp-team/discussions/478#discussioncomment-7179321
+   */
+  section:has(> :not(h1,h2,h3,h4,h5,h6)) > :first-child {
+    flex: 1 0 auto;
+    padding: 0;
+    margin: 0;
+    order: -999999;
+  }
+  section:has(> :not(h1,h2,h3,h4,h5,h6))::before {
+    flex: 1 0 auto;
+    display: block;
+    content: '';
+    order: 999999;
+  }
+
+  h2, h3, h4, h5, h6 {
+    opacity: .9;
+  }
+
+  ul, li {
+    text-align: left;
+    margin-left: 0;
+  }
+
+  .spoiler:not(:hover) {
+    color: var(--color-foreground);
+    background-color: var(--color-foreground);
+  }
+---
+# Git Fundamentals
+### What are Git objects?
+
+---
+## What's the index?
+## What's the working tree?
+
+---
+![bg](./files/worktree-index-commit.svg)
+
+---
+## What are Git objects?
+
+<br/>
+
+---
+## What are Git objects?
+
+They're files.
+
+<br/><br/><br/><br/><br/><br/><br/>
+
+---
+### Where are Git objects located?
+
+---
+### Where are Git objects located?
+
+They're in the `.git` directory.
+
+```
+.git/
+  objects/💁‍♂️
+  ...
+app/
+build.sbt
+```
+
+---
+## Demo time!
+
+---
+### Demo time! (Prerequisites)
+
+Install the `tree` command:
+```bash
+brew install tree
+```
+Useful for visualising directory trees in one go.
+
+---
+### Demo time! (Step 1)
+
+Create a fresh repo:
+```bash
+rm -rf my-test-repo;
+git init my-test-repo;
+cd my-test-repo;
+```
+Output:
+```text
+hint: Using 'master' as the name for the initial branch. This default branch name
+hint: is subject to change. To configure the initial branch name to use in all
+hint: of your new repositories, which will suppress this warning, call:
+hint: 
+hint:   git config --global init.defaultBranch <name>
+hint: 
+hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+hint: 'development'. The just-created branch can be renamed via this command:
+hint: 
+hint:   git branch -m <name>
+Initialized empty Git repository in .../my-test-repo/.git/                                                                                           
+```
+
+---
+### Demo time! (Step 2)
+⚠️ In a terminal window you won't use for work ⚠️,
+set the following environment variables:
+```bash
+export GIT_AUTHOR_NAME='Author';
+export GIT_AUTHOR_EMAIL='some@email';
+export GIT_COMMITTER_NAME='Author';
+export GIT_COMMITTER_EMAIL='some@email';
+
+export GIT_AUTHOR_DATE='2005-04-07T22:13:13+0000';
+export GIT_COMMITTER_DATE='2005-04-07T22:13:13+0000';
+
+export PS1="GIT DEMO ONLY: %1~ $ "; # To give you a warning in the terminal prompt.
+```
+This will force all commits to have the same dates/email.
+
+---
+### Demo time! (Step 3)
+
+We're in a fresh repo, so no commits yet!
+
+Run:
+```bash
+git status;
+```
+Output:
+```text
+On branch master
+
+No commits yet
+
+nothing to commit (create/copy files and use "git add" to track)
+```
+
+---
+### Demo time! (Step 4)
+Let's check the objects. Run:
+```bash
+tree .git/objects
+```
+Outputs:
+```text
+.git/objects
+├── info
+└── pack
+
+3 directories, 0 files
+```
+No objects yet. 😔 
+Those are empty directories, which we'll ignore.
+
+---
+### Demo time! (Step 5)
+
+So let's create a file.
+```bash
+touch my-file
+
+tree .git/objects
+```
+
+```text
+.git/objects
+├── info
+└── pack
+
+3 directories, 0 files
+```
+No objects yet. Why?
+<!-- Because the index is empty and there are no commits! -->
+
+---
+### Demo time! (Step 6)
+Add the new file to the index.
+```bash
+git add my-file
+
+tree .git/objects
+```
+```text
+.git/objects
+├── e6
+│   └── 9de29bb2d1d6434b8b29ae775ad8c2e48c5391
+├── info
+└── pack
+
+4 directories, 1 file
+```
+
+---
+### Demo time! (Step 7)
+Commit the file.
+```bash
+git commit --no-gpg-sign -m "Initial file."
+```
+
+```text
+[master (root-commit) dec1708] Initial file.
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 my-file
+```
+
+```bash
+git rev-parse HEAD
+```
+<!-- Outputs the commit ID given a commit reference: -->
+```text
+dec1708fb5f82790a8ac634819072ff0e08d05f0
+```
+
+---
+### Demo time! (Step 7)
+```bash
+tree .git/objects
+```
+
+```text
+.git/objects
+├── 52
+│   └── 82521d8ce09f66ba9cbab0f5eabf23ad31f569
+├── de
+│   └── c1708fb5f82790a8ac634819072ff0e08d05f0
+├── e6
+│   └── 9de29bb2d1d6434b8b29ae775ad8c2e48c5391
+├── info
+└── pack
+
+6 directories, 3 files
+```
+
+---
+## Demo over!
+
+---
+### Git objects
+As you add files and make commits, new files keep appearing in `.git/objects`.
+
+The files are in unreadable directories and have unreadable names.
+
+```text
+e6/9de29bb2d1d6434b8b29ae775ad8c2e48c5391
+```
+
+---
+### Git objects
+
+The file
+```text
+e6/9de29bb2d1d6434b8b29ae775ad8c2e48c5391
+```
+has the object name:
+```text
+e69de29bb2d1d6434b8b29ae775ad8c2e48c5391
+```
+
+The first two characters are moved to the directory level to prevent massive directories.
+
+---
+### So what's a Git object?
+
+
+---
+### So what's a Git object?
+
+- the content of a file
+- the content of a directory
+- a commit
+- a special kind of tag
+
+---
+### Blob
+
+---
+### Blobs
+
+- These git objects contain text or binary data.
+<br/>
+- They're the *content* of files.
+<br/>
+- File names and file metadata aren't stored in blobs.
+
+---
+### Trees
+- They're the content of directories, including the top-level directory.
+
+- The name of the directory is not stored in its tree object.
+
+- Stores the metadata of the directories and files *inside*.
+
+---
+### Commits
+
+Objects storing the circumstances under which a `tree` was made.
+
+---
+### Commits
+Let's look inside!
+```bash
+git cat-file -p dec1708fb5f82790a8ac634819072ff0e08d05f0
+```
+
+```text
+tree 5282521d8ce09f66ba9cbab0f5eabf23ad31f569
+author Author <some@email> 1112911993 +0000
+committer Author <some@email> 1112911993 +0000
+
+Initial file.
+```
+- Let's do the same with the tree!
+
+---
+### Trees
+
+```bash
+git cat-file -p 5282521d8ce09f66ba9cbab0f5eabf23ad31f569
+```
+outputs:
+```text
+100644 blob e69de29bb2d1d6434b8b29ae775ad8c2e48c5391    my-file
+```
+
+Let's repeat with the blob inside!
+
+---
+### Blobs
+```bash
+git cat-file -p e69de29bb2d1d6434b8b29ae775ad8c2e48c5391
+```
+outputs nothing!
+<br/><br/>
+Why?
+
+---
+### Blobs
+Our file was empty when we made the commit.
+<br/>
+Let's fix that.
+
+---
+### Get a better blob
+
+```bash
+echo "This is the content of my-file" > my-file
+git add my-file
+git commit --no-gpg-sign -m "Updated file."
+```
+```text
+[master 5a62e99] Updated file.
+ 1 file changed, 1 insertion(+)
+```
+And let's get the new commit ID.
+```bash
+git rev-parse HEAD
+```
+```text
+5a62e9907cc1d1b812e1ec0f25c9f2af75c1ff74
+```
+
+---
+### A new commit
+Look inside the new commit:
+```bash
+git cat-file -p 5a62e9907cc1d1b812e1ec0f25c9f2af75c1ff74
+```
+
+```bash
+tree 1e66dc10d0cd372d1767497cd7f38922b9eb22db
+parent dec1708fb5f82790a8ac634819072ff0e08d05f0
+author Author <some@email> 1112911993 +0000
+committer Author <some@email> 1112911993 +0000
+
+Updated file.
+```
+We have a parent object!
+And a new tree.
+
+---
+### A parent, you say?
+
+---
+### The commit parent
+```bash
+git cat-file -p dec1708fb5f82790a8ac634819072ff0e08d05f0
+```
+
+```text
+tree 5282521d8ce09f66ba9cbab0f5eabf23ad31f569
+author Author <some@email> 1112911993 +0000
+committer Author <some@email> 1112911993 +0000
+
+Initial file.
+```
+
+Ah. Just the previous commit. It even has the same ID.
+
+---
+### Our new tree
+```bash
+git cat-file -p 1e66dc10d0cd372d1767497cd7f38922b9eb22db
+```
+
+```text
+100644 blob 9825b7ec95fa48d57d77232f98a439e201fa21bf    my-file
+```
+
+It looks the same, but the blob ID is different.
+
+---
+### Our new blob
+```bash
+git cat-file -p 9825b7ec95fa48d57d77232f98a439e201fa21bf
+```
+
+```text
+This is the content of my-file
+```
+
+---
+### Our current status
+```bash
+tree .git/objects
+```
+gives us 6 objects:
+
+- `1e66dc10d0...` → the new top-level tree
+- `5282521d8c...` → the old top-level tree
+- `5a62e9907c...` → the new commit
+- `9825b7ec95...` → "This is the content of my-file"
+- `dec1708fb5...` → the old/initial commit
+- `e69de29bb2...` → empty blob
+
+---
+### How do we see the index?
+The index is not an object, but it does contain a `tree`.
+
+It's stored in a different location, `.git/index`.
+
+See the index with:
+```bash
+git ls-files --stage
+```
+
+```text
+100644 9825b7ec95fa48d57d77232f98a439e201fa21bf 0       my-file
+```
+
+---
+### How do we see the index?
+
+Or just run `git status`, to get a better summary of our current working tree, index, and current branch.
+
+---
+## Hashing and SHA-1
+
+###### What's SHA-1?
+
+---
+### SHA-1
+
+- An algorithm from 1995.
+- Takes a sequence of bytes of any length and returns a "summary" of 20 bytes.
+- Always returns the same 20 bytes for the same input.
+- *Any* change to the input, no matter how small, yields a completely different output.
+- Very difficult to find inputs that create an output.
+  - Effectively one-way functions.
+
+---
+#### All Git object IDs are the SHA-1 hashes of their content.
+
+###### What does that imply?
+
+---
+### Object IDs are hashes.
+
+If the content of an object changes, its filename will need to change too.
+<br/><br/><br/><br/><br/>
+
+
+---
+### Object IDs are hashes.
+
+If the content of an object changes, its filename will need to change too.
+<br/><br/><br/><br/>sooo...?
+
+---
+### Object IDs are hashes.
+
+All Git objects are immutable.
+<br/><br/>
+Once a commit has been created, the commit with that ID will *never* change.
+<br/>
+Because if you do change it, its ID will change as well.
+
+---
+# Questions?
